@@ -52,7 +52,7 @@ def link_from_category(category_link, category, n_pages):
     
   return results
 
-def links_for_search(query, result_links, n_pages=10):
+def links_for_search(query, newslinks_results, n_pages=10):
 
   # redirecting to google.com
   
@@ -72,4 +72,4 @@ def links_for_search(query, result_links, n_pages=10):
 
 
   # fetching all the links for news articles
-  result_links.append(link_from_category(category_link[0], "News",n_pages))
+  newslinks_results.append(link_from_category(category_link[0], "News",n_pages))
