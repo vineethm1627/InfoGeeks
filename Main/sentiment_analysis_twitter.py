@@ -126,10 +126,11 @@ def get_tweets(api, query, count = 10):
         # print error (if any)
         print("Error : " + str(e))
 
-def get_tweets(query, tweets_results):
+def get_tweets_main(query, tweets_results):
     
 	# calling TwitterClient Function
 	api = TwitterClient()
     
 	# calling function to get tweets
-	tweets_results = get_tweets(api, query = query, count = 50)
+	list(tweets_results) = get_tweets(api, query = query, count = 50)
+
