@@ -1,6 +1,7 @@
 from flask import Flask, request
 import github_module
 import youtube_module
+import sentiment_analysis
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__) 
@@ -19,6 +20,13 @@ def fetchVideoLinks():
     query = request.args.get('query')
     temp = youtube_module.extractYoutubeVideos(query)
     return {'Videos': temp}
+
+@app.route('/twitter')
+@cross_origin(supports_credentials=True)
+def fetchTweets():
+    query = request.args.get('query')
+    temp = sentiment_analysis.get_tweets_main(query)
+    return {'Tweets': temp}
 
 if __name__ == '__main__':
    app.run(debug=True, port=5000)
