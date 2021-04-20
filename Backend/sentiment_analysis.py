@@ -62,7 +62,7 @@ def get_tweets(api, query, count = 10):
 
     try:
         # call twitter api to fetch tweets
-        fetched_tweets = api.search(q = query, count = count)
+        fetched_tweets = api.search(q = query, count = count, lang='en')
 
         # parsing tweets one by one
         for tweet in fetched_tweets:
