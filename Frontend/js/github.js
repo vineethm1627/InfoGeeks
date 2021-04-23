@@ -18,14 +18,14 @@ search_form.addEventListener("submit", function (event) {
       console.log(data["URLS"]);
       console.log(data["URLS"].length);
       for (let links = 0; links < data["URLS"].length; ++links) {
-        div.innerHTML += `<div class="col">
-            <div class="card">
-           <div class="card-body">
-           <h5 class="card-title">${data["URLS"][links][0]}</h5>
-           <p class="card-text">Stars: ${data["URLS"][links][1]}</p>
-          </div>
-          </div>
-          </div>`;
+        div.innerHTML += `<blockquote class="twitter-tweet">
+        <p><a href="${data["URLS"][links][0]}">
+
+        ${data["URLS"][links][0]}
+        </a>
+        </p>
+        <p>Stars: ${data["URLS"][links][1]}</p>
+      </blockquote>`;
       }
     })
     .then(() => {

@@ -15,14 +15,13 @@ search_form.addEventListener("submit", function (event) {
       console.log(data["Tweets"]);
       console.log(data["Tweets"].length);
       for (let links = 0; links < data["Tweets"].length; ++links) {
-        div.innerHTML += `<div class="col">
-            <div class="card">
-           <div class="card-body">
-           <h5 class="card-title">${data["Tweets"][links].text}</h5>
-           <p class="card-text">Sentiment: ${data["Tweets"][links].sentiment}</p>
-          </div>
-          </div>
-          </div>`;
+        div.innerHTML += `<blockquote class="twitter-tweet">
+          <p>
+
+          ${data["Tweets"][links].text}
+          </p>
+          <p>Sentiment: ${data["Tweets"][links].sentiment}</p>
+        </blockquote>`;
       }
     })
     .then(() => {
