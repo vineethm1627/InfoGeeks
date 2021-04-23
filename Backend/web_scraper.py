@@ -8,7 +8,7 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 #chrome_options.add_argument('--enable-webgl')
-driver = webdriver.Chrome(executable_path="C://Users//agarw//AppData//Local//Programs//Python//Python39//chromedriver.exe", chrome_options=chrome_options) #place the path of chromedriver.exe from your pc in executable_path
+driver = webdriver.Chrome(executable_path="C://Python38//chromedriver.exe", chrome_options=chrome_options) #place the path of chromedriver.exe from your pc in executable_path
 
 
 # function for getting links from the specified category

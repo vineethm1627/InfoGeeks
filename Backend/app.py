@@ -3,7 +3,7 @@ import github_module
 import youtube_module
 import sentiment_analysis
 import final_file_parallel
-#import web_scraper
+import web_scraper
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__) 

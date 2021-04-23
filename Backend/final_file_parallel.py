@@ -26,7 +26,7 @@ chrome_options.add_argument("--disable-webgl")
 # # chrome_options.add_argument('--disable-gpu')
 # # # repalce the first argument with the path of your driver
 driver = webdriver.Chrome(
-    executable_path='C://Users//agarw//AppData//Local//Programs//Python//Python39//chromedriver.exe', options=chrome_options)
+    executable_path='C://Python38//chromedriver.exe', options=chrome_options)
 
 
 # function for getting links from the specified category
