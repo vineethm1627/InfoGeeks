@@ -1,26 +1,30 @@
 import multiprocessing
-from sentiment_analysis import get_tweets_main
-from github_module import extract_repos
-from youtube_module import extractYoutubeVideos
+#from sentiment_analysis import get_tweets_main
+#from github_module import extract_repos
+#from youtube_module import extractYoutubeVideos
+
+from extract_Videos_parallel import extractYoutubeVideos
+from extractrepos_parallel import extract_repos
+from sentiment_analysis_twitter_parallel import get_tweets_main
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+
 from bs4 import BeautifulSoup
 import time
-# creating a chrome instance.
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--no-sandbox")
+
+chrome_options= webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
 chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument('--disable-gpu')
-# redirecting to google.com
-# chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument('--headless')
-# chrome_options.add_argument('--no-sandbox')
-# chrome_options.add_argument('--disable-dev-shm-usage')
-# chrome_options.add_argument('--disable-gpu')
-# # repalce the first argument with the path of your driver
+chrome_options.add_argument("--use-gl=swiftshader")
+chrome_options.add_argument("--ignore-gpu-blacklist")
+chrome_options.add_argument("--disable-webgl")
+# # redirecting to google.com
+# # chrome_options = webdriver.ChromeOptions()
+# # chrome_options.add_argument('--headless')
+# # chrome_options.add_argument('--no-sandbox')
+# # chrome_options.add_argument('--disable-dev-shm-usage')
+# # chrome_options.add_argument('--disable-gpu')
+# # # repalce the first argument with the path of your driver
 driver = webdriver.Chrome(
     executable_path='C://Users//agarw//AppData//Local//Programs//Python//Python39//chromedriver.exe', options=chrome_options)
 
@@ -69,6 +73,26 @@ def links_for_search(query, n_pages=10):
 
     return newslinks_results
 
+
+def links_for_search_parallel(query, newslinks_results, n_pages=10):
+  driver.get("https://www.google.com")
+  # accessing the search bar and searching the specified query
+  search_bar = driver.find_element_by_name("q")
+  search_bar.clear()
+  search_bar.send_keys(query)
+  search_bar.send_keys(Keys.RETURN)
+
+  # fetching the news and videos links for the specified query
+  category_list = ["News"]
+  category_link = []
+  for i in category_list:
+    category_link.append(driver.find_element_by_link_text(i).get_attribute('href'))
+
+
+  # fetching all the links for news articles
+  newslinks_results.append(link_from_category(category_link[0], "News",n_pages))
+
+
 def parallel_implementation(query):
     final_results = []
 
@@ -84,7 +108,7 @@ def parallel_implementation(query):
         p3 = multiprocessing.Process(
             target=get_tweets_main, args=(query, processes[2]))
         p4 = multiprocessing.Process(
-            target=links_for_search, args=(query, processes[3]))
+            target=links_for_search_parallel, args=(query, processes[3]))
 
         p1.start()
         p2.start()
@@ -100,24 +124,22 @@ def parallel_implementation(query):
         for i in processes:
             final_results.append(list(i))
 
+        
+
     parallel_time = time.time() - start_time
 
     youTube_results, github_results, tweet_results, news_results = [], [], [], []
 
     youTube_results = final_results[0]
 
-
     github_results = final_results[1]
 
-
-    tweet_results = final_results[2][0]
-
+    tweet_results = final_results[2]
 
     news_results = final_results[3]
-
 
     return {'Youtube': youTube_results,
             'Github': github_results,
             'Tweets': tweet_results,
-            'New': news_results,
-            'Total Parallel': parallel_time}
+            'Total Parallel': parallel_time,
+            'News':news_results}

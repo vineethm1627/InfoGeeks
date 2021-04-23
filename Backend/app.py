@@ -2,7 +2,8 @@ from flask import Flask, request
 import github_module
 import youtube_module
 import sentiment_analysis
-import web_scraper
+import final_file_parallel
+#import web_scraper
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__) 
@@ -39,6 +40,13 @@ def fetchLinks():
     temp = web_scraper.links_for_search(query)
     return {'Links': temp}
 
+
+@app.route('/parallel')
+@cross_origin(supports_credentials=True)
+def fetchAll():
+    query = request.args.get('query')
+    temp = final_file_parallel.parallel_implementation(query)
+    return temp
 
 if __name__ == '__main__':
    app.run(debug=True, port=5000)
