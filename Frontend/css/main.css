@@ -811,12 +811,26 @@ button {
   padding-left: 26px;
 }
 
+.header {
+  text-align: center;
+  color:midnightblue;
+  font-size: 45px;
+
+  text-rendering: optimizeSpeed ;
+}
+
+blockquote .header p {
+  font-weight: bolder;
+}
+
+
 .twitter-tweet {
   vertical-align: middle;
   display: inline-block;
   font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
   font-size: 12px;
   font-weight: bold;
+  text-rendering: auto ;
   line-height: 16px;
   border-color: #eee #ddd #bbb;
   background-color: white;
@@ -826,7 +840,8 @@ button {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   margin: 10px 5px;
   padding: 0 16px 16px 16px;
-  max-width: 468px;
+  width: 755px;
+  background-color:whitesmoke;
   
 }
 
@@ -848,13 +863,19 @@ blockquote .twitter-tweet a:focus {
   text-decoration: underline;
 }
 
+#container{
+  width:100%;
+  height:500px;
+  position:relative;
+}
+
 .scroll {
   display: block;
   border: 0px solid red;
   padding: 5px;
   margin-top: 5px;
   width: 100%;
-  height: 300px;
+  height: 385px;
   overflow-y: auto;
   margin-top: 5%;
 }
