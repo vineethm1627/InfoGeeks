@@ -3,12 +3,14 @@ from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 import time
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--no-sandbox")
+chrome_options= webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
 chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--use-gl=swiftshader")
+chrome_options.add_argument("--ignore-gpu-blacklist")
+chrome_options.add_argument("--disable-webgl")
 #chrome_options.add_argument('--enable-webgl')
-driver = webdriver.Chrome(executable_path="C://Python38//chromedriver.exe", chrome_options=chrome_options) #place the path of chromedriver.exe from your pc in executable_path
+driver = webdriver.Chrome(executable_path="C://Users//agarw//AppData//Local//Programs//Python//Python39//chromedriver.exe", options=chrome_options) #place the path of chromedriver.exe from your pc in executable_path
 
 
 # function for getting links from the specified category
@@ -32,7 +34,7 @@ def link_from_category(category_link, category, n_pages):
     return results
 
 
-def links_for_search(query, n_pages=10):
+def links_for_search(query, n_pages=6):
     newslinks_results = []
 
     driver.get("https://www.google.com")
