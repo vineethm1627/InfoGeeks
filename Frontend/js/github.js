@@ -17,6 +17,10 @@ search_form.addEventListener("submit", function (event) {
       let div = document.getElementById("main");
       console.log(data["URLS"]);
       console.log(data["URLS"].length);
+      {
+        let div = document.getElementById("git_h");
+        div.innerHTML = `<blockquote class='header'><br>Github Repositories</blockquote>`
+      }
       for (let links = 0; links < data["URLS"].length; ++links) {
         div.innerHTML += `<blockquote class="twitter-tweet">
         <p><a href="${data["URLS"][links][0]}">
@@ -36,6 +40,6 @@ search_form.addEventListener("submit", function (event) {
       console.log(err);
     });
 
-  
-    
+
+
 });

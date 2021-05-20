@@ -6,6 +6,8 @@ search_form.addEventListener("submit", function (event) {
 
   let yturl = "http://127.0.0.1:5000/youtube?query=" + search_query.value;
 
+
+
   var start = new Date().getTime() / 1000;
 
   let ytResponse = fetch(yturl)
@@ -14,6 +16,10 @@ search_form.addEventListener("submit", function (event) {
       let div = document.getElementById("main");
       console.log(data["Videos"]);
       console.log(data["Videos"].length);
+      {
+        let div = document.getElementById("yt_h");
+        div.innerHTML = `<blockquote class='header'><br>Youtube Videos</blockquote>`
+      }
       for (let links = 0; links < data["Videos"].length; ++links) {
         div.innerHTML += `<blockquote class="twitter-tweet">
         <p><a href="${data["Videos"][links]}">
