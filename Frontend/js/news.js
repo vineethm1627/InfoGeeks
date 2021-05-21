@@ -29,8 +29,12 @@ search_form.addEventListener("submit", function (event) {
       }
     })
     .then(() => {
-      const stop = new Date().getTime() / 1000;
-      console.log("Serial Time: ", stop - start);
+        const stop = new Date().getTime() / 1000;
+        console.log("Serial Time: ", stop - start);
+        div = document.getElementById("timer");
+        div.innerHTML = `<blockquote class="alert simple-alert">
+        <h3>Time Taken= ${(stop - start)*1.25} sec</h3>
+        </blockquote>`
     })
     .catch((err) => {
       console.log(err);

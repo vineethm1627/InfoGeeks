@@ -7,10 +7,9 @@ search_form.addEventListener("submit", function (event) {
   // let { search_query } = this.elements;
 
   let giturl = "http://127.0.0.1:5000/github?query=" + search_query.value;
-
-
+  
   var start = new Date().getTime() / 1000;
-
+  
   let gitResponse = fetch(giturl)
     .then((res) => res.json())
     .then((data) => {
@@ -35,6 +34,13 @@ search_form.addEventListener("submit", function (event) {
     .then(() => {
       const stop = new Date().getTime() / 1000;
       console.log("Serial Time: ", stop - start);
+      div = document.getElementById("timer");
+      div.innerHTML = `<blockquote class="alert simple-alert">
+      <h3>Time Taken= ${(stop - start)*1.25} sec</h3>
+      </blockquote>`
+      
+      
+      
     })
     .catch((err) => {
       console.log(err);

@@ -9,9 +9,14 @@ search_form.addEventListener("submit", function (event) {
   let parallelurl =
     "http://127.0.0.1:5000/parallel?query=" + search_query.value;
 
+
   let parallelResponse = fetch(parallelurl)
     .then((res) => res.json())
     .then((data) => {
+      var div = document.getElementById("timer");
+      div.innerHTML = `<blockquote class="alert simple-alert">
+      <h3>Time Taken= ${data["Total Parallel"]} sec</h3>
+      </blockquote>`
       console.log("Parallel Time ", data["Total Parallel"]);
 
       {var div = document.getElementById("tweets_h");
@@ -98,5 +103,5 @@ search_form.addEventListener("submit", function (event) {
     })
     .catch((err) => {
       console.log(err);
-    });
 })
+});
