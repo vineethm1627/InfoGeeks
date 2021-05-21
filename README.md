@@ -10,6 +10,21 @@ High Performance Computing Semester Project
 4. Pulkit Jain [E18CSE136]
 5. Samarth Agarwal [E18CSE160]
 
+## Demo Snapshots:
+
+![img1](Snapshots/a_1.png)
+---
+![img2](Snapshots/a_2.png)
+---
+![img3](Snapshots/a_3.png)
+---
+![img4](Snapshots/a_4.png)
+---
+![img5](Snapshots/a_5.png)
+---
+![img6](Snapshots/a_6.png)
+---
+
 ## Abstract:
 Gathering useful resources and learning new things every day is an indispensable part of our day-to-day life. With the vast amount of information at our disposal online, occurring in various formats such as articles, videos, research publications etc. Often, it becomes intimidating to deal with such a plethora of sources.
 Organizing things is a key to an efficient and holistic approach towards learning. Based on our observations, it is a common fact that people spend most of their time searching for the same topic using various suffix keywords like video, articles, tutorials, projects, etc and bookmarks the useful pages for referencing later.
