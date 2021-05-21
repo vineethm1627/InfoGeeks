@@ -1,3 +1,22 @@
+*{
+  
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+h3{
+  font-family: monospace, monospace;
+}
+.alert{
+  width:55%;
+  margin:20px auto;
+  background-color:#9abafd;
+  padding:30px;
+  position:relative;
+  border-radius:5px;
+  box-shadow: -20px 20px 10px -10px rgb(100, 100, 100);
+} 
+
 html {
   line-height: 1.15;
   /* 1 */
